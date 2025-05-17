@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RGB Color Mixer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .color-preview {
+      width: 60%;
+      height: 100px;
+      margin: 20px auto;
+      line-height: 100px;
+      color: #333;
+      font-weight: bold;
+      background-color: rgb(255, 123, 71);
+    }
+
+    .slider-group {
+      margin: 20px 0;
+    }
+
+    .slider-container {
+      margin: 10px;
+    }
+
+    label {
+      display: inline-block;
+      width: 50px;
+    }
+
+    input[type="range"] {
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <h2>RGB:</h2>
+
+  <div class="color-preview" id="colorPreview">
+    rgb(255, 123, 71)
+  </div>
+
+  <div class="slider-group">
+    <div class="slider-container">
+      <label for="red">RED</label>
+      <input type="range" id="red" min="0" max="255" value="255" />
+      <span id="redVal">255</span>
+    </div>
+    <div class="slider-container">
+      <label for="green">GREEN</label>
+      <input type="range" id="green" min="0" max="255" value="123" />
+      <span id="greenVal">123</span>
+    </div>
+    <div class="slider-container">
+      <label for="blue">BLUE</label>
+      <input type="range" id="blue" min="0" max="255" value="71" />
+      <span id="blueVal">71</span>
+    </div>
+  </div>
+
+  <script>
+    const red = document.getElementById('red');
+    const green = document.getElementById('green');
+    const blue = document.getElementById('blue');
+
+    const redVal = document.getElementById('redVal');
+    const greenVal = document.getElementById('greenVal');
+    const blueVal = document.getElementById('blueVal');
+    const colorPreview = document.getElementById('colorPreview');
+
+    function updateColor() {
+      const r = red.value;
+      const g = green.value;
+      const b = blue.value;
+
+      const rgbString = `rgb(${r}, ${g}, ${b})`;
+
+      redVal.textContent = r;
+      greenVal.textContent = g;
+      blueVal.textContent = b;
+
+      colorPreview.style.backgroundColor = rgbString;
+      colorPreview.textContent = rgbString;
+    }
+
+    red.addEventListener('input', updateColor);
+    green.addEventListener('input', updateColor);
+    blue.addEventListener('input', updateColor);
+  </script>
+</body>
+</html>
