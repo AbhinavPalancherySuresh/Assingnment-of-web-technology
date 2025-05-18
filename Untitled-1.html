@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+let input = prompt("Enter a string:");
+let wordCount = input.trim().split(/\s+/).length;
+let charCount = input.length;
+let spaceCount = (input.match(/ /g) || []).length;
+let specialCount = (input.match(/[^a-zA-Z0-9 ]/g) || []).length;
+alert(`Words: ${wordCount}\nCharacters: ${charCount}\nSpaces: ${spaceCount}\nSpecial Symbols: ${specialCount}`);
+</script>
+</body>
+</html>
